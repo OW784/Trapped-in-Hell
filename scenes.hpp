@@ -1,7 +1,7 @@
 #pragma once
 #include "game_system.hpp"
 
-class MenuScene : public scene {
+class MenuScene : public Scene {
 public:
 	MenuScene() = default;
 	void update(const float& dt) override;
@@ -13,7 +13,7 @@ private:
 
 };
 
-class LevelScene : public scene {
+class LevelScene : public Scene {
 public:
 	LevelScene() = default;
 	void update(const float& dt) override;
@@ -21,7 +21,7 @@ public:
 	void load() override;
 	void unload() override;
 private:
-
+	void _load_level(const std::string& filepath);
 };
 
 struct Scenes {

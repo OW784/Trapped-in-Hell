@@ -8,6 +8,7 @@ int LevelSystem::_width;
 int LevelSystem::_height;
 sf::Vector2f LevelSystem::_offset(0.0f, 0.0f);
 sf::Vector2f LevelSystem::_start_position;
+sf::Texture LevelSystem::_wallTexture;
 
 float LevelSystem::_tile_size(100.f);
 std::vector<std::unique_ptr<sf::RectangleShape>> LevelSystem::_sprites;
@@ -90,6 +91,10 @@ void LevelSystem::load_level(const std::string& path, float tile_size) {
     _height = h;
     std::copy(temp_tiles.begin(), temp_tiles.end(), &_tiles[0]);
     std::cout << "Level " << path << " Loaded. " << w << "x" << h << std::endl;
+    if (!_wallTexture.loadFromFile("assets/tiles/tile1.png")) {
+        throw std::runtime_error("Failed to load wall texture");
+    }
+    _wallTexture.setSmooth(false);
     build_sprites();
 }
 
@@ -101,6 +106,10 @@ void LevelSystem::build_sprites() {
             s->setPosition(get_tile_position({x, y}));
             s->setSize(sf::Vector2f(_tile_size, _tile_size));
             s->setFillColor(get_color(get_tile({x, y})));
+            if (get_tile({ x, y }) == WALL) {
+                s->setFillColor(sf::Color::White);
+                s->setTexture(&_wallTexture, true);
+            }
             _sprites.push_back(move(s));
         }
     }

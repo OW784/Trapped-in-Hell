@@ -1,23 +1,23 @@
-w				      w
-w				      w
-w				      w
-w				      w
-w				      w
-w				      w
-w                                     w
-w                                     w
-w                                     w
-w                                     w
-w                                     w
-w                                     w
-w              wwwwww                 w
-w                                     w
-w                                     w
-w    wwwwwwww            wwwww        w
-w                                     w
-w                                     w
-w                    wwwww            w
-w                                     w
-w                                     w
-w                  s                  w
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w                                      w
+w              wwwwww                  w
+w                                      w
+w                                      w
+w    wwwwww            wwwww           w
+w                                      w
+w                                      w
+w              ww                      w
+w                                      w
+w                   s                  w
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww

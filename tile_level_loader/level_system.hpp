@@ -41,7 +41,7 @@ protected:
  //generate the _sprites array
  static void build_sprites();
  static void _get_group(Tile type,const sf::Vector2i &pos,const std::vector<sf::Vector2i> &tile_list,std::vector<sf::Vector2i>& group,bool vert);
-
+ static sf::Texture _wallTexture;
 
 
 private:
