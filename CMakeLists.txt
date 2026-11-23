@@ -31,7 +31,8 @@ target_link_libraries(engine sfml-graphics box2d tile_level)
 
 add_executable(trapped_in_hell
     main.cpp
-    scenes.cpp)
+    scenes.cpp
+    spritecmp.cpp)
 target_include_directories(trapped_in_hell PRIVATE ${SFML_INCS} ${B2D_INCS} engine tile_level_loader)
 target_link_libraries(trapped_in_hell sfml-graphics box2d engine tile_level)
 set_target_properties(trapped_in_hell 

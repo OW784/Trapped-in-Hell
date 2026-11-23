@@ -1,4 +1,5 @@
 #pragma once
+#define M_PI 3.14159265358979323846
 
 struct parameters {
 	static constexpr int game_width = 1280;

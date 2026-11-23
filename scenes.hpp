@@ -22,6 +22,7 @@ public:
 	void unload() override;
 private:
 	void _load_level(const std::string& filepath);
+	std::shared_ptr<Entity> _player;
 };
 
 struct Scenes {
