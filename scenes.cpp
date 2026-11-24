@@ -4,6 +4,7 @@
 #include "game_parameters.hpp"
 #include "renderer.hpp"
 #include "spritecmp.hpp"
+#include "weaponcmp.hpp"
 
 
 using ls = LevelSystem;
@@ -40,6 +41,22 @@ void LevelScene::_load_level(const std::string& filepath) {
 	sprite->get_sprite().setTextureRect(
 		sf::IntRect(0, 0, 16, 24)
 	);
+
+	auto gun_sprite = _player->add_component<WeaponComponent>();
+	auto gun_texture = std::make_shared<sf::Texture>();
+
+	if (!gun_texture->loadFromFile("assets/sprite_sheets/gun/gun.png")) {
+		throw std::runtime_error("Failed to load gun texture");
+	}
+	gun_texture->setSmooth(false);
+	gun_sprite->set_texture(gun_texture);
+	gun_sprite->get_sprite().setScale(2.f, 2.f);
+	gun_sprite->get_sprite().setOrigin(8.f, 9.f);
+	gun_sprite->get_sprite().setTextureRect(
+		sf::IntRect(0, 0, 16, 24)
+	);
+	gun_sprite->set_offset(sf::Vector2f(0.f, -30.f));
+
 }
 
 
