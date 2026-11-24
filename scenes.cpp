@@ -18,6 +18,7 @@ std::shared_ptr<Scene> Scenes::level;
 void LevelScene::_load_level(const std::string& filepath) {
 	ls::load_level(filepath, param::tile_size);
 
+
 	_player = make_entity();
 	sf::Vector2f spawn = ls::get_start_position();
 
@@ -43,6 +44,11 @@ void LevelScene::_load_level(const std::string& filepath) {
 
 
 void LevelScene::load() {
+	_backgroundTexture.loadFromFile("assets/backgrounds/hell.png");
+	_backgroundTexture.setSmooth(false);
+
+	_backgroundSprite.setTexture(_backgroundTexture);
+	_backgroundSprite.setScale(4.f, 4.f);
 	_load_level(param::level1);
 }
 
@@ -51,6 +57,8 @@ void LevelScene::update(const float& dt) {
 }
 
 void LevelScene::render() {
+	Renderer::get_window().draw(_backgroundSprite);
+
 	ls::render(Renderer::get_window());
 	Scene::render();
 }
