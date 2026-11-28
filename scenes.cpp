@@ -5,7 +5,7 @@
 #include "renderer.hpp"
 #include "spritecmp.hpp"
 #include "weaponcmp.hpp"
-
+#include "physicscmp.hpp"
 
 using ls = LevelSystem;
 using param = parameters;
@@ -27,6 +27,15 @@ void LevelScene::_load_level(const std::string& filepath) {
 	spawn.y += param::tile_size;
 
 	_player->set_position(spawn);
+	std::shared_ptr<PlayerPhysicsComponent> cmp =
+		_player->add_component<PlayerPhysicsComponent>(
+			sf::Vector2f(param::player_size[0], param::player_size[1]));
+
+	cmp->create_capsule_shape(
+		sf::Vector2f(param::player_size[0], param::player_size[1]),
+		param::player_weight,
+		param::player_friction,
+		param::player_restitution);
 
 	auto sprite = _player->add_component<SpriteComponent>();
 	auto texture = std::make_shared<sf::Texture>();
@@ -56,7 +65,12 @@ void LevelScene::_load_level(const std::string& filepath) {
 		sf::IntRect(0, 0, 16, 24)
 	);
 	gun_sprite->set_offset(sf::Vector2f(0.f, -30.f));
+	std::vector<std::vector<sf::Vector2i>> wall_groups = ls::get_groups(ls::WALL);
 
+	for (const std::vector<sf::Vector2i>& walls : wall_groups) {
+		_walls.push_back(make_entity());
+		_walls.back()->add_component<PlatformComponent>(walls);
+	}
 }
 
 
@@ -83,3 +97,4 @@ void LevelScene::render() {
 void LevelScene::unload() {
 	Scene::unload();
 }
+

@@ -23,6 +23,7 @@ public:
 private:
 	void _load_level(const std::string& filepath);
 	std::shared_ptr<Entity> _player;
+	std::vector<std::shared_ptr<Entity>> _walls;
 	sf::Texture _backgroundTexture;
 	sf::Sprite _backgroundSprite;
 };
